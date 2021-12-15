@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="fr">
 <head>
@@ -9,6 +10,17 @@
 </head>
 
 <body>
-<h1>Hello {{ name }} !</h1>
+<h1>Products</h1>
+<table>
+{% for row in products|batch(3, 'No product') %}
+    <tr>
+        {% for column in row %}
+            <td>{{ column }}</td>
+        {% endfor %}
+    </tr>
+{% endfor %}
+
+    {{ dump(products) }}
+</table>
 </body>
 </html>
